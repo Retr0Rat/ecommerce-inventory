@@ -37,3 +37,15 @@ class InventoryTracker:
         else:
             print(f"Item '{item_name}' not found in inventory.")
             return 0
+
+    def alertLowStock(self, threshold: int = 10):
+        print(f"\n--- Low Stock Alerts (threshold: {threshold}) ---")
+        low_stock_items = []
+        for name, details in self.inventory.items():
+            if details["quantity"] < threshold:
+                print(f"  WARNING: '{name}' is low! Only {details['quantity']} units left.")
+                low_stock_items.append(name)
+        if not low_stock_items:
+            print("  All items are sufficiently stocked.")
+        print("--------------------------------------------------\n")
+        return low_stock_items
