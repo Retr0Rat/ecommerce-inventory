@@ -28,3 +28,12 @@ class InventoryTracker:
         for name, details in self.inventory.items():
             print(f"  {name}: qty={details['quantity']}, price=${details['price']:.2f}")
         print("-------------------------\n")
+
+    def checkStockLevel(self, item_name: str) -> int:
+        if item_name in self.inventory:
+            quantity = self.inventory[item_name]["quantity"]
+            print(f"Stock level for '{item_name}': {quantity} units")
+            return quantity
+        else:
+            print(f"Item '{item_name}' not found in inventory.")
+            return 0
